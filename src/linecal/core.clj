@@ -10,10 +10,7 @@
 (defn createLine
   "creates one of the lines"
   [ ymd ]
-  (let [year (nth ymd 0)
-        month (nth ymd 1)
-        day (nth ymd 2)
-        cal (nth ymd 3)]
+  (let [[year month day cal] ymd]
     (.set cal year month day)
     (let [dayOfWeek (.get cal java.util.Calendar/DAY_OF_WEEK)]
       [year month day dayOfWeek])))
@@ -33,7 +30,7 @@
 
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Create a list of dates and concomittant weekdays"
   [& args]
   (if (= (count args) 2)
     (println (line-calendar (first args) (nth args 1)))
