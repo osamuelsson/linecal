@@ -3,18 +3,17 @@
   (:gen-class))
 
 ;; TODO
-;; Make the day-of-week work correctly .. now it starts at monday for sep 2017 !?
 ;; Make it generate for something other than the current month (.newInstance ..)
 ;; Change this to a "gen"
 ;; Add a "sum", etc.
 
-(def nameOfDay {1 'M
-                2 'Ti
-                3 'O
-                4 'To
-                5 'F
-                6 'L
-                7 'S})
+(def nameOfDay {2 'M
+                3 'Ti
+                4 'O
+                5 'To
+                6 'F
+                7 'L
+                1 'S})
 
 (defn createLine
   "creates one of the lines"
@@ -32,7 +31,7 @@
         firstDayOfMonth (.getActualMinimum cal java.util.Calendar/DAY_OF_MONTH)
         lastDayOfMonth (.getActualMaximum cal java.util.Calendar/DAY_OF_MONTH)
         year (.get cal java.util.Calendar/YEAR)
-        month (+ 1 (.get cal java.util.Calendar/MONTH))
+        month (.get cal java.util.Calendar/MONTH)
         ]
     (map createLine
          (map (fn [day] (list year month day cal))
