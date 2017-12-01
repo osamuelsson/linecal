@@ -34,7 +34,7 @@
         month (.get cal java.util.Calendar/MONTH)
         ]
     (map createLine
-         (map (fn [day] (list year month day cal))
+         (map (fn [day] (list year (+ 1 month) day cal))
               (range firstDayOfMonth (+ 1 lastDayOfMonth))))))
 
 
