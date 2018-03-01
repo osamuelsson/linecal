@@ -22,7 +22,7 @@
     (.clear cal)
     (.set cal year month day)
     (let [dayOfWeek (.get cal java.util.Calendar/DAY_OF_WEEK)]
-      [year month day (nameOfDay dayOfWeek)])))
+      [year (+ 1 month) day (nameOfDay dayOfWeek)])))
 
 (defn line-calendar
   "Returns a list of the days in the month represented by the date and the day of week"
@@ -34,7 +34,7 @@
         month (.get cal java.util.Calendar/MONTH)
         ]
     (map createLine
-         (map (fn [day] (list year (+ 1 month) day cal))
+         (map (fn [day] (list year month day cal))
               (range firstDayOfMonth (+ 1 lastDayOfMonth))))))
 
 
