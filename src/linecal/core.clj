@@ -30,17 +30,22 @@
   (let [cal (.newInstance java.util.GregorianCalendar)
         firstDayOfMonth (.getActualMinimum cal java.util.Calendar/DAY_OF_MONTH)
         lastDayOfMonth (.getActualMaximum cal java.util.Calendar/DAY_OF_MONTH)
-        year (.get cal java.util.Calendar/YEAR)
-        month (.get cal java.util.Calendar/MONTH)
         ]
     (map createLine
          (map (fn [day] (list year month day cal))
               (range firstDayOfMonth (+ 1 lastDayOfMonth))))))
+
+(defn line-calendar-for-this-month
+  "Returns alist of the days in this month"
+  []
+  (let [cal (.newInstance java.util.GregorianCalendar)]
+    (line-calendar (.get cal java.util.Calendar/YEAR) (.get cal java.util.Calendar/MONTH))))
+
 
 
 (defn -main
   "Create a list of dates and concomittant weekdays"
   [& args]
   (if (= (count args) 2)
-    (println (line-calendar (first args) (nth args 1)))
-    (pprint (line-calendar "2017" "09"))))
+    (pprint (line-calendar (Integer. (first args)) (- (Integer. (nth args 1)) 1)))
+    (pprint (line-calendar-for-this-month))))
