@@ -17,8 +17,8 @@
 
 (defn createLine
   "creates one of the lines"
-  [ ymd ]
-  (let [[year month day cal] ymd]
+  [ args ]
+  (let [[year month day cal] args]
     (.clear cal)
     (.set cal year month day)
     (let [dayOfWeek (.get cal java.util.Calendar/DAY_OF_WEEK)]
@@ -27,7 +27,7 @@
 (defn line-calendar
   "Returns a list of the days in the month represented by the date and the day of week"
   [year month]
-  (let [cal (.newInstance java.util.GregorianCalendar)
+  (let [cal (new java.util.GregorianCalendar)
         firstDayOfMonth (.getActualMinimum cal java.util.Calendar/DAY_OF_MONTH)
         lastDayOfMonth (.getActualMaximum cal java.util.Calendar/DAY_OF_MONTH)
         ]
@@ -38,7 +38,7 @@
 (defn line-calendar-for-this-month
   "Returns alist of the days in this month"
   []
-  (let [cal (.newInstance java.util.GregorianCalendar)]
+  (let [cal (new java.util.GregorianCalendar)]
     (line-calendar (.get cal java.util.Calendar/YEAR) (.get cal java.util.Calendar/MONTH))))
 
 
