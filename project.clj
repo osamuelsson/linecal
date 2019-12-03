@@ -1,5 +1,5 @@
 (defproject linecal "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "Fiddle with a line-based calendar"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
